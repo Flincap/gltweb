@@ -17,7 +17,7 @@ export type Extension = {
 
 export const EXTENSIONS: Extension[] = [
   {
-    name: "Lekki (Headquarters)",
+    name: "Lekki (International Headquarters)",
     city: "Lekki, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -50,6 +50,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:15am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 6:00pm – 7:35pm",
   },
@@ -65,7 +66,10 @@ export const EXTENSIONS: Extension[] = [
     address:
       "3rd Floor, 117 Egbeda-Idimu Road, Beside RCCG Car Park, Abule Odu Bus Stop, Egbeda, Lagos",
     tz: "WAT",
-    services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
+    services: [
+      { label: "Sunday Service", time: "Sun 9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
+    ],
     bibleStudy: "Tue 6:00pm – 8:00pm",
   },
   {
@@ -81,7 +85,7 @@ export const EXTENSIONS: Extension[] = [
     tz: "WAT",
     services: [
       { label: "Sunday Service", time: "Sun 9:30am" },
-      { label: "SMS (1st Sun)", time: "9:30am" },
+      { label: "SMS (Last Sun)", time: "9:30am" },
     ],
     note: "Members join HQ online for Bible Study",
   },
@@ -97,7 +101,7 @@ export const EXTENSIONS: Extension[] = [
     tz: "WAT",
     services: [
       { label: "Sunday Service", time: "Sun 9:00am" },
-      { label: "SMS (1st Sun)", time: "9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
     ],
     bibleStudy: "Tue 6:00pm – 8:00pm",
   },
@@ -115,7 +119,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 9:00am" },
       { label: "2nd Service", time: "Sun 11:30am" },
-      { label: "SMS (1st Sun)", time: "9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
     ],
     bibleStudy: "Tue 6:00pm – 7:45pm",
   },
@@ -131,7 +135,10 @@ export const EXTENSIONS: Extension[] = [
     address:
       "Line C10, Mike Oga Street, Behind Toddlers' Haven School, By MTN Mast, Hajj Camp, Gwagwalada, Abuja",
     tz: "WAT",
-    services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
+    services: [
+      { label: "Sunday Service", time: "Sun 9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
+    ],
     bibleStudy: "Tue 6:00pm – 8:00pm",
   },
   {
@@ -149,6 +156,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "1st Service", time: "Sun 7:45am" },
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "3rd Service", time: "Sun 12:15pm" },
+      { label: "SMS (Last Sun)", time: "7:45am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:45pm",
   },
@@ -166,7 +174,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 10:00am" },
       { label: "2nd Service", time: "Sun 12:00pm" },
-      { label: "SMS (1st Sun)", time: "10:00am" },
+      { label: "SMS (Last Sun)", time: "10:00am" },
     ],
     bibleStudy: "Tue 5:50pm – 6:30pm",
     note: "Members also join HQ online",
@@ -185,7 +193,7 @@ export const EXTENSIONS: Extension[] = [
     tz: "WAT",
     services: [
       { label: "Sunday Service", time: "Sun 9:00am" },
-      { label: "SMS (1st Sun)", time: "9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:30pm",
   },
@@ -203,6 +211,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:00am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:30pm",
   },
@@ -221,6 +230,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:00am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 8:00pm",
   },
@@ -239,6 +249,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:00am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:30pm",
   },
@@ -256,7 +267,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 9:00am" },
       { label: "2nd Service", time: "Sun 10:00am" },
-      { label: "SMS (1st Sun)", time: "9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:30pm",
     note: "Members also join HQ online",
@@ -275,6 +286,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:00am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:45pm",
   },
@@ -293,6 +305,7 @@ export const EXTENSIONS: Extension[] = [
     services: [
       { label: "1st Service", time: "Sun 8:00am" },
       { label: "2nd Service", time: "Sun 10:15am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
     ],
     bibleStudy: "Tue 5:30pm – 7:30pm",
   },
@@ -308,7 +321,10 @@ export const EXTENSIONS: Extension[] = [
     address:
       "68, INEC Road, Beside Emis Event Centre, Kpansia-Epie, Yenagoa, Bayelsa State",
     tz: "WAT",
-    services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
+    services: [
+      { label: "Sunday Service", time: "Sun 9:00am" },
+      { label: "SMS (Last Sun)", time: "9:00am" },
+    ],
     bibleStudy: "Tue 5:00pm – 7:00pm",
   },
   {
@@ -355,7 +371,7 @@ export const EXTENSIONS: Extension[] = [
   },
 ];
 
-export const ONIONS = [
+export const PILLARS = [
   {
     title: "The Word",
     body: "We are a strong Word church. We have a biting hunger for God's Word and accept it as truth in all circumstances. The Word is taught with simplicity, clarity, and power, bringing understanding and transformation. We do not go by feelings; we go by the Word. God says it, we believe it, we act on it, and that settles it.",
@@ -425,7 +441,10 @@ export const LINKS = {
   youtube: "https://youtube.com/c/GLTChurchWorldwide",
   mixlr: "https://mixlr.com/gltchurchlive",
   telegram: "https://t.me/gltlekkimessages",
+  leverage: "https://t.me/s/LeverageDevotional",
   announcements: "https://bit.ly/gltlekki",
+  // TODO: replace with your real form endpoint (e.g. Formspree: https://formspree.io/f/XXXXXXXX)
+  newsletterEndpoint: "#TODO-newsletter-endpoint",
   email: "enquiries@glt.church",
   phone: "+2349062807057",
   phoneDisplay: "+234 906 280 7057",
@@ -435,3 +454,10 @@ export const LINKS = {
 
 export const mapsLink = (address: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+export const SOCIALS = {
+  youtube: "https://youtube.com/c/GLTChurchWorldwide",
+  instagram: "#TODO-instagram", // TODO: real Instagram profile URL
+  facebook: "#TODO-facebook", // TODO: real Facebook page URL
+  telegramLeverage: "https://t.me/s/LeverageDevotional",
+};

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
-import { ONIONS } from "../data";
+import Seo from "../Seo";
+import { PILLARS } from "../data";
 import setman from "../assets/setman.jpg";
 
 function History() {
@@ -9,7 +11,7 @@ function History() {
       <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <Eyebrow>A brief history</Eyebrow>
-          <h2 className="font-display text-[clamp(2rem,4.2vw,3.4rem)]">
+          <h2 className="font-display text-[clamp(1.9rem,4vw,3.2rem)]">
             From ten people
             <br />
             in a small room
@@ -22,7 +24,7 @@ function History() {
               ["Today", "Thousands, with extensions on 3 continents"],
             ].map(([d, t]) => (
               <p key={d} className="py-2 text-sm">
-                <span className="font-display mr-3 text-base" style={{ color: "var(--glt-green)" }}>
+                <span className="font-display mr-3 text-base" style={{ color: "var(--glt-green-deep)" }}>
                   {d}
                 </span>
                 <span className="text-[var(--glt-ink-soft)]">{t}</span>
@@ -58,9 +60,10 @@ function History() {
               testimony has been from tens to hundreds, hundreds to thousands.
               The church now has her own property, an auditorium which seats on
               average one thousand, seven hundred people, with various
-              extensions and outreaches within and outside Nigeria. God's Word
-              is true; the path of the just is as a shining light that shines
-              brighter and brighter even unto the perfect day.
+              extensions (our branches) and outreaches within and outside
+              Nigeria. God's Word is true; the path of the just is as a shining
+              light that shines brighter and brighter even unto the perfect
+              day.
             </p>
           </div>
         </Reveal>
@@ -75,7 +78,7 @@ function VisionMission() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:grid-cols-2 md:py-32">
         <Reveal>
           <Eyebrow light>Our vision</Eyebrow>
-          <p className="font-display text-[clamp(1.5rem,2.7vw,2.2rem)] leading-tight">
+          <p className="text-lg leading-[1.85] text-white md:text-xl">
             We are commissioned to teach and preach with all simplicity and
             clarity the New Creation Realities in Christ Jesus, stressing
             emphatically the integrity of God's Word by the power of the Holy
@@ -84,8 +87,12 @@ function VisionMission() {
         </Reveal>
         <Reveal delay={120}>
           <Eyebrow light>Our mission</Eyebrow>
-          <p className="font-display text-[clamp(1.5rem,2.7vw,2.2rem)] leading-tight text-[var(--glt-lime)]">
+          <p className="font-display text-[clamp(1.5rem,2.7vw,2.2rem)] leading-tight text-white">
             Raising Kingdom Ambassadors manifesting abundant Zoe.
+          </p>
+          <p className="mt-4 text-[15px] leading-relaxed text-[var(--glt-mint)]">
+            Zoe is the God-kind of life: the very life of God at work in His
+            people.
           </p>
         </Reveal>
       </div>
@@ -93,20 +100,20 @@ function VisionMission() {
   );
 }
 
-function Onions() {
+function Pillars() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 md:py-28">
       <Reveal>
-        <Eyebrow>The Onions of GLT</Eyebrow>
-        <h2 className="font-display max-w-2xl text-[clamp(2rem,4.2vw,3.4rem)]">
+        <Eyebrow>The Pillars of GLT</Eyebrow>
+        <h2 className="font-display max-w-2xl text-[clamp(1.9rem,4vw,3.2rem)]">
           Eleven things that make this house, this house
         </h2>
       </Reveal>
       <div className="mt-12 grid gap-px overflow-hidden border border-[var(--glt-line)] bg-[var(--glt-line)] sm:grid-cols-2 lg:grid-cols-3">
-        {ONIONS.map((o, i) => (
+        {PILLARS.map((o, i) => (
           <Reveal key={o.title} delay={(i % 3) * 90} className="h-full">
             <article className="h-full bg-white p-7 transition hover:bg-[var(--glt-leaf)]">
-              <p className="font-display text-sm" style={{ color: "var(--glt-green)" }}>
+              <p className="font-display text-sm" style={{ color: "var(--glt-green-deep)" }}>
                 {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="font-display mt-2 text-xl">{o.title}</h3>
@@ -138,26 +145,30 @@ function Onions() {
 function Setman() {
   return (
     <section className="slant-top text-white" style={{ background: "var(--glt-ink)" }}>
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-28 md:pb-28 lg:grid-cols-[1fr_1.15fr]">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-24 md:pb-20 lg:grid-cols-[1fr_1.15fr]">
         <Reveal>
           <img
             src={setman}
             alt="Apostle Segun Obadje and Pastor Funke Obadje"
             className="w-full max-w-md justify-self-center border-8 border-white/5 object-cover lg:max-w-none"
+            loading="lazy"
+            width={1100}
+            height={1320}
           />
         </Reveal>
         <Reveal delay={120}>
           <Eyebrow light>Meet the Setman</Eyebrow>
-          <h2 className="font-display text-[clamp(2rem,4.2vw,3.4rem)]">
+          <h2 className="font-display text-[clamp(1.9rem,4vw,3.2rem)]">
             Apostle Segun &amp;
             <br />
             Pastor Funke Obadje
           </h2>
-          <div className="mt-7 space-y-5 text-[15.5px] leading-[1.85] text-white/80">
+          <div className="mt-7 space-y-5 text-[15.5px] leading-[1.85] text-white/85">
             <p>
-              With over two decades of active ministry, Apostle Segun Obadje
-              has dedicated his entire life to teaching and preaching New
-              Creation Realities in Christ Jesus with all simplicity and
+              The Setman is the leader God has set over the house: our lead
+              pastor. With over two decades of active ministry, Apostle Segun
+              Obadje has dedicated his entire life to teaching and preaching
+              New Creation Realities in Christ Jesus with all simplicity and
               clarity. An Apostle by calling, with an uncommon teaching grace
               accompanied by a strong prophetic cutting edge.
             </p>
@@ -169,9 +180,9 @@ function Setman() {
               impactful, life-changing message.
             </p>
           </div>
-          <a href="#/resources" className="btn btn-solid mt-9">
-            Hear the Word <ArrowRight size={16} />
-          </a>
+          <Link to="/sermons" className="btn btn-solid mt-9">
+            Hear the Word <ArrowRight size={16} aria-hidden />
+          </Link>
         </Reveal>
       </div>
     </section>
@@ -181,6 +192,11 @@ function Setman() {
 export default function WhoWeAre() {
   return (
     <>
+      <Seo
+        title="Who We Are | GLT Church"
+        description="GLT is not another denomination but a movement: from ten people in Ile-Ife in 2007 to thousands across Africa, Europe and North America. Meet Apostle Segun and Pastor Funke Obadje."
+        path="/who-we-are"
+      />
       <SlantHeader
         kicker="Who we are"
         title="Not another denomination. A movement."
@@ -188,7 +204,7 @@ export default function WhoWeAre() {
       />
       <History />
       <VisionMission />
-      <Onions />
+      <Pillars />
       <Setman />
     </>
   );

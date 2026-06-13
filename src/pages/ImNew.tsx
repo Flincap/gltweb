@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
 import {
   Accordion,
@@ -6,11 +7,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
+import Seo from "../Seo";
 import { FAQS, LINKS, mapsLink } from "../data";
 
 export default function ImNew() {
   return (
     <>
+      <Seo
+        title="I'm New | GLT Church"
+        description="Planning your first visit to GLT Church? We meet Sundays at 7:45am & 10:00am (WAT) at the GLT Lekki Auditorium, Lekki-Epe Expressway, Lagos. Here's what to expect."
+        path="/im-new"
+      />
       <SlantHeader
         kicker="I'm new"
         title="Welcome. We're so glad you're here."
@@ -50,7 +57,9 @@ export default function ImNew() {
                 <p>
                   We worship on Sundays by 7:45am for 1st service and 10:00am
                   (WAT) for 2nd service. Join us for the Special Miracle
-                  Service (SMS) every first Sunday of the month by 8:00am.
+                  Service (SMS) every first Sunday of the month by 8:00am at
+                  the international headquarters. Extensions in Nigeria hold
+                  theirs on the last Sunday of the month.
                 </p>
                 <p>Tuesdays: we have our Bible Study by 6:30pm.</p>
               </div>
@@ -63,7 +72,7 @@ export default function ImNew() {
                     style={{ color: "var(--glt-green)" }}
                   />
                   <span>
-                    <strong>GLT Lekki Auditorium</strong>
+                    <strong>GLT Lekki Auditorium (our international headquarters)</strong>
                     <br />
                     Piccadilly Suites, behind Unity Bank, Igbo-Efon Junction,
                     Lekki-Epe Expressway, Lekki, Lagos
@@ -78,9 +87,9 @@ export default function ImNew() {
                   >
                     Get directions
                   </a>
-                  <a href="#/extensions" className="btn btn-outline-ink">
-                    Find our other extensions <ArrowRight size={16} />
-                  </a>
+                  <Link to="/extensions" className="btn btn-outline-ink">
+                    Find our other extensions <ArrowRight size={16} aria-hidden />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -117,9 +126,9 @@ export default function ImNew() {
               <p className="font-display text-2xl">
                 Still have a question? We'd love to hear from you.
               </p>
-              <a href="#/contact" className="btn btn-ink shrink-0">
-                Contact us <ArrowRight size={16} />
-              </a>
+              <Link to="/contact" className="btn btn-ink shrink-0">
+                Contact us <ArrowRight size={16} aria-hidden />
+              </Link>
             </div>
           </Reveal>
         </div>

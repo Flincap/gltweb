@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { MapPin, Phone, Mail, Clock, BookOpen, Search, ExternalLink } from "lucide-react";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
+import Seo from "../Seo";
 import { EXTENSIONS, mapsLink, type Extension } from "../data";
 
 const REGIONS = ["All", "Africa", "Europe", "North America"] as const;
@@ -19,7 +20,7 @@ function ExtensionCard({ ext }: { ext: Extension }) {
         {ext.hq && (
           <span
             className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white"
-            style={{ background: "var(--glt-green)" }}
+            style={{ background: "var(--glt-green-deep)" }}
           >
             HQ
           </span>
@@ -54,7 +55,7 @@ function ExtensionCard({ ext }: { ext: Extension }) {
           {ext.address}
         </p>
         <p className="pl-[26px] text-[13px]">
-          Senior Resident Ministers: <span className="font-semibold text-[var(--glt-ink)]">{ext.smr}</span>
+          Set Man Representative: <span className="font-semibold text-[var(--glt-ink)]">{ext.smr}</span>
         </p>
       </div>
 
@@ -64,7 +65,7 @@ function ExtensionCard({ ext }: { ext: Extension }) {
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1.5 uppercase tracking-[0.08em]"
-          style={{ color: "var(--glt-green)" }}
+          style={{ color: "var(--glt-green-deep)" }}
         >
           <ExternalLink size={14} /> Directions
         </a>
@@ -112,10 +113,15 @@ export default function Extensions() {
 
   return (
     <>
+      <Seo
+        title="Our Extensions | GLT Church Locations Worldwide"
+        description="Find a GLT Church near you: 20+ extensions (branches) across Nigeria, the United Kingdom, the United States and Canada, with service times, addresses and directions."
+        path="/extensions"
+      />
       <SlantHeader
         kicker="Our extensions"
         title="One house. Three continents."
-        sub="From Lekki to Birmingham to Houston to Calgary, find the GLT family closest to you and join us this Sunday."
+        sub="Extensions are our branches. From Lekki to Birmingham to Houston to Calgary, find the GLT family closest to you and join us this Sunday."
       />
       <section className="mx-auto max-w-7xl px-5 py-16 md:py-20">
         <Reveal>
@@ -123,7 +129,7 @@ export default function Extensions() {
             <div>
               <Eyebrow>Find a location</Eyebrow>
               <h2 className="font-display text-[clamp(1.9rem,3.8vw,3rem)]">
-                {EXTENSIONS.length} extensions worldwide
+                {EXTENSIONS.length}+ extensions worldwide
               </h2>
             </div>
             <label className="relative block w-full max-w-sm">
@@ -198,7 +204,7 @@ export default function Extensions() {
               Not near a GLT yet?
             </p>
             <p className="mt-2 max-w-lg text-white/85">
-              Join the headquarters live online every Sunday and Tuesday,
+              Join the international headquarters live online every Sunday and Tuesday,
               wherever you are in the world.
             </p>
           </div>

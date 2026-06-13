@@ -9,7 +9,8 @@
   --glt-ink-soft: #1a2417;
   --glt-paper: #f7f5ef;
   --glt-leaf: #e9f1e3;
-  --glt-lime: #b9e3a6;
+  --glt-lime: #b9e3a6; /* use on ink backgrounds only (12.9:1) */
+  --glt-mint: #eef9e6; /* AA-compliant accent on brand green (4.68:1) */
   --glt-line: rgba(14, 21, 12, 0.12);
 }
 
@@ -243,4 +244,27 @@ label.flabel {
   text-transform: uppercase;
   margin-bottom: 0.45rem;
   color: var(--glt-ink-soft);
+}
+
+
+/* Global visible focus for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--glt-green);
+  outline-offset: 2px;
+}
+nav a:focus-visible,
+footer a:focus-visible,
+.btn-outline-light:focus-visible,
+.btn-give:focus-visible {
+  outline-color: var(--glt-mint);
+}
+
+/* Long display headings should wrap, never clip */
+.font-display {
+  overflow-wrap: break-word;
 }

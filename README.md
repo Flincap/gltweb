@@ -1,27 +1,25 @@
 # GLT Church Website
 
-React + TypeScript + Vite + Tailwind. Deploys on Vercel out of the box.
+React + TypeScript + Vite + Tailwind. Deploys on Vercel (vercel.json included for SPA rewrites).
 
 ## Run locally
 npm install
 npm run dev
 
-## Build for deployment (what Vercel runs)
+## Build (what Vercel runs)
 npm run build        # outputs to dist/
 
-Vercel: framework preset "Vite", build command "npm run build", output directory "dist". No other config needed. Routing is hash-based, so no rewrites are required.
-
 ## Where things live
-- src/data.ts        -> all extensions, onions, FAQs, links (edit here to update content)
-- src/pages/         -> Home, WhoWeAre, Extensions, ImNew, Other (Events/Resources/Contact)
-- src/shared.tsx     -> nav, footer, give dialog, slant page header
+- src/data.ts        -> all extensions, pillars, FAQs, links, social URLs (edit here to update content)
+- src/pages/         -> Home, WhoWeAre, Extensions, ImNew, Other (Events/Sermons/Contact)
+- src/shared.tsx     -> nav, footer, newsletter form, give dialog, slant header
+- src/Seo.tsx        -> per-route titles/meta (site URL constant lives here)
 - src/site.css       -> design tokens (brand green #257f18) and the slant signature
-- src/assets/        -> hero videos (web-compressed), posters, logos, Setman photo
+- public/            -> favicon, og-image, robots.txt, sitemap.xml
 
-## Before launch
-1. Hero videos are compressed for the web (1.9MB total). To use higher-quality versions, replace the files in src/assets/ with same-named higher-bitrate MP4s and rebuild.
-2. Put real bank details in the Give dialog (src/shared.tsx).
-3. Point Leverage Devotional to its real link (src/pages/Other.tsx).
-4. Connect the contact form and the email subscribe field to your provider (currently the form opens the visitor's email app addressed to enquiries@glt.church).
-5. Replace placeholder event flyers on the Events page with real ones (src/pages/Other.tsx).
-6. Swap the Google Maps links for embedded maps if you want maps on the page.
+## Placeholders to fill in (search the codebase for TODO)
+1. src/data.ts -> SOCIALS.instagram (#TODO-instagram)
+2. src/data.ts -> SOCIALS.facebook (#TODO-facebook)
+3. src/data.ts -> LINKS.newsletterEndpoint (#TODO-newsletter-endpoint). Create a free Formspree form and paste its endpoint; the form already POSTs JSON {email}.
+4. src/shared.tsx -> Give dialog bank details.
+5. When the glt.church domain is attached: update the SITE constant in src/Seo.tsx, the URLs in index.html OG/Twitter tags, public/robots.txt and public/sitemap.xml (currently gltweb.vercel.app).
