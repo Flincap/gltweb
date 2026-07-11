@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --glt-green: #257f18;
   --glt-green-deep: #1b6111;
@@ -30,6 +26,11 @@ body {
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.95;
+  text-wrap: balance; /* even line lengths, no orphaned words */
+}
+
+p {
+  text-wrap: pretty; /* progressive enhancement: avoids single-word last lines */
 }
 
 .eyebrow {
@@ -38,6 +39,25 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
+}
+
+/* The eyebrow dash draws itself in */
+@keyframes lineGrow {
+  from { width: 0; }
+  to { width: 2rem; }
+}
+.eyebrow-line {
+  width: 2rem;
+  animation: lineGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+/* Inside scroll-reveals, the dash waits for the section to enter view */
+.reveal .eyebrow-line {
+  animation: none;
+  width: 0;
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+.reveal.in .eyebrow-line {
+  width: 2rem;
 }
 
 /* Signature device: the slant cut */
@@ -68,7 +88,7 @@ body {
   padding: 0.95rem 1.7rem;
   border: 2px solid transparent;
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
-    transform 0.18s ease;
+    transform 0.18s ease, box-shadow 0.18s ease;
   cursor: pointer;
   text-decoration: none;
 }
@@ -76,8 +96,13 @@ body {
   outline: 3px solid var(--glt-lime);
   outline-offset: 2px;
 }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(14, 21, 12, 0.16);
+}
 .btn:active {
   transform: translateY(1px);
+  box-shadow: none;
 }
 .btn-solid {
   background: var(--glt-green);
@@ -156,6 +181,31 @@ body {
   font-size: clamp(2.6rem, 7.2vw, 6.2rem);
 }
 
+/* Gentle scroll cue at the base of the hero */
+.scroll-cue {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+.scroll-cue span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: var(--glt-lime);
+  animation: cueDrop 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes cueDrop {
+  0% { transform: translateY(-18px); opacity: 1; }
+  70%, 100% { transform: translateY(56px); opacity: 0.4; }
+}
+
 .fade-swap {
   transition: opacity 1.1s ease;
 }
@@ -186,11 +236,22 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .rise-in,
-  .reveal {
+  .reveal,
+  .eyebrow-line,
+  .reveal .eyebrow-line,
+  .scroll-cue span {
     animation: none;
     transition: none;
     opacity: 1;
     transform: none;
+  }
+  .eyebrow-line,
+  .reveal .eyebrow-line {
+    width: 2rem;
+  }
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
   }
   html {
     scroll-behavior: auto;

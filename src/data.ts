@@ -1,4 +1,4 @@
-import { FaYoutube, FaInstagram, FaFacebook, FaTelegram } from "react-icons/fa6";
+import { FaYoutube, FaInstagram, FaXTwitter, FaTelegram } from "react-icons/fa6";
 
 export const PAGES = [
   { id: "", label: "Home", path: "/" },
@@ -479,8 +479,6 @@ export const LINKS = {
   telegram: "https://t.me/gltlekkimessages",
   leverage: "https://t.me/s/LeverageDevotional",
   announcements: "https://bit.ly/gltlekki",
-  // TODO: replace with your real form endpoint (e.g. Formspree: https://formspree.io/f/XXXXXXXX)
-  newsletterEndpoint: "#TODO-newsletter-endpoint",
   email: "enquiries@glt.church",
   phone: "+2349062807057",
   phoneDisplay: "+234 906 280 7057",
@@ -493,15 +491,14 @@ export const mapsLink = (address: string) =>
 
 export const SOCIALS = {
   youtube: "https://youtube.com/c/GLTChurchWorldwide",
-  instagram: "#TODO-instagram", // TODO: real Instagram profile URL
-  facebook: "#TODO-facebook", // TODO: real Facebook page URL
+  instagram: "https://www.instagram.com/gltlekki/",
+  x: "https://x.com/gltchurch",
   telegramLeverage: "https://t.me/s/LeverageDevotional",
 };
 
 export const SOCIAL_ICONS = [
   { icon: FaYoutube, href: SOCIALS.youtube, label: "GLT Church on YouTube" },
   { icon: FaInstagram, href: SOCIALS.instagram, label: "GLT Church on Instagram" },
-  { icon: FaFacebook, href: SOCIALS.facebook, label: "GLT Church on Facebook" },
+  { icon: FaXTwitter, href: SOCIALS.x, label: "GLT Church on X" },
   { icon: FaTelegram, href: SOCIALS.telegramLeverage, label: "Leverage Devotional on Telegram" },
-  // Links still marked TODO are hidden until real profile URLs are added above
-].filter((s) => !s.href.includes("TODO"));
+];

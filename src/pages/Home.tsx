@@ -108,6 +108,9 @@ function Hero() {
           ))}
         </div>
       </div>
+      <div className="scroll-cue hidden md:block" aria-hidden>
+        <span />
+      </div>
     </section>
   );
 }
@@ -181,7 +184,7 @@ function Happening() {
           </h2>
           <p className="max-w-md text-[15px] leading-relaxed text-[var(--glt-ink-soft)]">
             Check out what's happening this month at GLT. See upcoming events
-            and stay up to date by subscribing to our monthly email.
+            and stay current through our announcements channel.
           </p>
         </div>
       </Reveal>

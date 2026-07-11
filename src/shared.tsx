@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, MapPin, Phone, Mail } from "lucide-react";
 import {
@@ -52,7 +52,7 @@ export function Eyebrow({ children, light }: { children: ReactNode; light?: bool
       style={{ color: light ? "var(--glt-mint)" : "var(--glt-green)" }}
     >
       <span
-        className="inline-block h-[2px] w-8"
+        className="eyebrow-line inline-block h-[2px]"
         style={{ background: light ? "var(--glt-mint)" : "var(--glt-green)" }}
       />
       {children}
@@ -83,7 +83,10 @@ export function SlantHeader({
           {title}
         </h1>
         {sub && (
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white md:text-lg">
+          <p
+            className="rise-in mt-5 max-w-2xl text-base leading-relaxed text-white md:text-lg"
+            style={{ animationDelay: "140ms" }}
+          >
             {sub}
           </p>
         )}
@@ -250,69 +253,6 @@ export function Nav({ onGive }: { onGive: () => void }) {
   );
 }
 
-export function NewsletterForm({ dark }: { dark?: boolean }) {
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
-
-  const submit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    if (LINKS.newsletterEndpoint.includes("TODO")) {
-      // Endpoint not configured yet: accept locally so the UX is complete.
-      setState("done");
-      return;
-    }
-    setState("sending");
-    try {
-      const res = await fetch(LINKS.newsletterEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      setState(res.ok ? "done" : "error");
-    } catch {
-      setState("error");
-    }
-  };
-
-  if (state === "done") {
-    return (
-      <p
-        role="status"
-        className={`border p-3 text-sm ${
-          dark ? "border-[var(--glt-mint)]/50 text-[var(--glt-mint)]" : "border-[var(--glt-green)] text-[var(--glt-green-deep)]"
-        }`}
-      >
-        You're on the list. Watch your inbox at the start of next month.
-      </p>
-    );
-  }
-  return (
-    <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
-      <label className="sr-only" htmlFor={dark ? "nl-dark" : "nl-light"}>
-        Email address
-      </label>
-      <input
-        id={dark ? "nl-dark" : "nl-light"}
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@email.com"
-        className={`field flex-1 ${dark ? "border-white/25 bg-white/10 text-white placeholder:text-white/60" : ""}`}
-      />
-      <button className="btn btn-solid shrink-0" type="submit" disabled={state === "sending"}>
-        {state === "sending" ? "Subscribing…" : "Subscribe"}
-      </button>
-      {state === "error" && (
-        <p role="alert" className="text-sm text-red-300">
-          That didn't go through. Try again or email {LINKS.email}.
-        </p>
-      )}
-    </form>
-  );
-}
-
 export function Footer({ onGive }: { onGive: () => void }) {
   return (
     <footer className="slant-top text-white" style={{ background: "var(--glt-ink)" }}>
@@ -389,12 +329,19 @@ export function Footer({ onGive }: { onGive: () => void }) {
         </div>
         <div>
           <p className="eyebrow mb-5" style={{ color: "var(--glt-lime)" }}>
-            Monthly email
+            Stay current
           </p>
           <p className="mb-4 text-sm leading-relaxed text-white/75">
-            Upcoming events, announcements, and resources, once a month.
+            Upcoming events, announcements, and resources, all in one place.
           </p>
-          <NewsletterForm dark />
+          <a
+            href={LINKS.announcements}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-outline-light"
+          >
+            Read announcements
+          </a>
           <p className="eyebrow mb-3 mt-8" style={{ color: "var(--glt-lime)" }}>
             Follow
           </p>
@@ -412,6 +359,17 @@ export function Footer({ onGive }: { onGive: () => void }) {
               </a>
             ))}
           </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-5 py-6 text-[13px] text-white/60 sm:flex-row sm:items-center">
+          <p>
+            © {new Date().getFullYear()} God's Love Tabernacle International
+            Church. All rights reserved.
+          </p>
+          <p className="eyebrow text-[11px] text-white/50">
+            A people of God's love
+          </p>
         </div>
       </div>
     </footer>

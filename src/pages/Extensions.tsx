@@ -1,10 +1,49 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MapPin, Phone, Mail, Clock, BookOpen, Search, ExternalLink } from "lucide-react";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
 import Seo from "../Seo";
 import { EXTENSIONS, mapsLink, type Extension } from "../data";
 
 const REGIONS = ["All", "Africa", "Europe", "North America"] as const;
+
+/* Counts up from 0 when scrolled into view; renders the final number
+   immediately for reduced-motion users and non-JS-observer environments. */
+function CountUp({ to, duration = 1200 }: { to: number; duration?: number }) {
+  const [n, setN] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? to
+      : 0
+  );
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || n === to) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started.current) return;
+        started.current = true;
+        io.disconnect();
+        const t0 = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - t0) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setN(Math.round(eased * to));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [to, duration]);
+
+  return <span ref={ref}>{n}</span>;
+}
 
 function ExtensionCard({ ext }: { ext: Extension }) {
   return (
@@ -129,7 +168,7 @@ export default function Extensions() {
             <div>
               <Eyebrow>Find a location</Eyebrow>
               <h2 className="font-display text-[clamp(1.9rem,3.8vw,3rem)]">
-                {EXTENSIONS.length}+ extensions worldwide
+                <CountUp to={EXTENSIONS.length} />+ extensions worldwide
               </h2>
             </div>
             <label className="relative block w-full max-w-sm">
