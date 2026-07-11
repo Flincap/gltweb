@@ -1,7 +1,6 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, MapPin, Phone, Mail } from "lucide-react";
-import { FaYoutube, FaInstagram, FaFacebook, FaTelegram } from "react-icons/fa6";
 import {
   Dialog,
   DialogContent,
@@ -10,17 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import logoWhite from "./assets/logo_white.png";
-import { LINKS, SOCIALS } from "./data";
-
-export const PAGES = [
-  { id: "", label: "Home", path: "/" },
-  { id: "who-we-are", label: "Who We Are", path: "/who-we-are" },
-  { id: "extensions", label: "Our Extensions", path: "/extensions" },
-  { id: "im-new", label: "I'm New", path: "/im-new" },
-  { id: "events", label: "Events", path: "/events" },
-  { id: "sermons", label: "Sermons", path: "/sermons" },
-  { id: "contact", label: "Contact Us", path: "/contact" },
-] as const;
+import { GIVING, LINKS, PAGES, SOCIAL_ICONS } from "./data";
 
 export function Reveal({
   children,
@@ -127,13 +116,44 @@ export function GiveDialog({
             </DialogDescription>
           </DialogHeader>
         </div>
-        <div className="space-y-4 px-7 pb-8 pt-2 text-sm leading-relaxed">
+        <div className="max-h-[55vh] space-y-4 overflow-y-auto px-7 pb-8 pt-2 text-sm leading-relaxed">
           <div className="card-line p-4">
             <p className="eyebrow mb-1" style={{ color: "var(--glt-green)" }}>
-              Bank transfer
+              Bank transfer (Naira)
             </p>
             <p className="text-[var(--glt-ink)]">
-              [Account name, bank, and account number go here before launch]
+              <strong>{GIVING.main.accountName}</strong>
+              <br />
+              {GIVING.main.bank} · {GIVING.main.accountNumber}
+            </p>
+          </div>
+          <div className="card-line p-4">
+            <p className="eyebrow mb-1" style={{ color: "var(--glt-green)" }}>
+              GLT Dom accounts
+            </p>
+            <p className="text-[var(--glt-ink)]">
+              <strong>{GIVING.dom.accountName}</strong>
+              <br />
+              {GIVING.dom.bank} · Sort code {GIVING.dom.sortCode}
+            </p>
+            <ul className="mt-2 space-y-1 text-[var(--glt-ink)]">
+              {GIVING.dom.accounts.map((a) => (
+                <li key={a.currency}>
+                  {a.currency}: <strong>{a.number}</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="card-line p-4">
+            <p className="eyebrow mb-1" style={{ color: "var(--glt-green)" }}>
+              North America
+            </p>
+            <p className="text-[var(--glt-ink)]">
+              <strong>{GIVING.northAmerica.accountName}</strong>
+              <br />
+              {GIVING.northAmerica.bank} · {GIVING.northAmerica.accountNumber}
+              <br />
+              Zelle: <strong>{GIVING.northAmerica.zelle}</strong>
             </p>
           </div>
           <div className="card-line p-4">
@@ -158,7 +178,12 @@ export function GiveDialog({
 export function Nav({ onGive }: { onGive: () => void }) {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
-  useEffect(() => setOpen(false), [pathname]);
+  // Close the mobile menu whenever the route changes (render-time derivation, no effect needed)
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
   return (
     <nav
       className="fixed inset-x-0 top-0 z-50 shadow-[0_2px_18px_rgba(0,0,0,0.22)]"
@@ -287,13 +312,6 @@ export function NewsletterForm({ dark }: { dark?: boolean }) {
     </form>
   );
 }
-
-const SOCIAL_ICONS = [
-  { icon: FaYoutube, href: SOCIALS.youtube, label: "GLT Church on YouTube" },
-  { icon: FaInstagram, href: SOCIALS.instagram, label: "GLT Church on Instagram" },
-  { icon: FaFacebook, href: SOCIALS.facebook, label: "GLT Church on Facebook" },
-  { icon: FaTelegram, href: SOCIALS.telegramLeverage, label: "Leverage Devotional on Telegram" },
-];
 
 export function Footer({ onGive }: { onGive: () => void }) {
   return (

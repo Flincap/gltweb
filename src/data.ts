@@ -1,3 +1,15 @@
+import { FaYoutube, FaInstagram, FaFacebook, FaTelegram } from "react-icons/fa6";
+
+export const PAGES = [
+  { id: "", label: "Home", path: "/" },
+  { id: "who-we-are", label: "Who We Are", path: "/who-we-are" },
+  { id: "extensions", label: "Our Extensions", path: "/extensions" },
+  { id: "im-new", label: "I'm New", path: "/im-new" },
+  { id: "events", label: "Events", path: "/events" },
+  { id: "sermons", label: "Sermons", path: "/sermons" },
+  { id: "contact", label: "Contact Us", path: "/contact" },
+] as const;
+
 export type Extension = {
   name: string;
   city: string;
@@ -27,7 +39,7 @@ export const EXTENSIONS: Extension[] = [
     phone: "+234 906 280 7057",
     email: "enquiries@glt.church",
     address:
-      "Piccadilly Suites, By Samsung Office, Igbo-Efon Junction, Lekki-Epe Expressway, Lekki, Lagos",
+      "Piccadilly Suites, behind Kon-X, Igbo-Efon Bus Stop, Lekki-Epe Expressway, Lekki, Lagos",
     tz: "WAT",
     services: [
       { label: "1st Service", time: "Sun 7:45am" },
@@ -371,7 +383,7 @@ export const EXTENSIONS: Extension[] = [
   },
 ];
 
-export const PILLARS = [
+export const ONIONS = [
   {
     title: "The Word",
     body: "We are a strong Word church. We have a biting hunger for God's Word and accept it as truth in all circumstances. The Word is taught with simplicity, clarity, and power, bringing understanding and transformation. We do not go by feelings; we go by the Word. God says it, we believe it, we act on it, and that settles it.",
@@ -437,6 +449,30 @@ export const FAQS = [
   },
 ];
 
+export const GIVING = {
+  main: {
+    bank: "GTBank",
+    accountName: "God's Love Tabernacle International Church",
+    accountNumber: "0037371491",
+  },
+  dom: {
+    bank: "GTBank",
+    accountName: "God's Love Tabernacle International Church",
+    sortCode: "058294910",
+    accounts: [
+      { currency: "Dollars (USD)", number: "0037371501" },
+      { currency: "Pounds (GBP)", number: "0037371518" },
+      { currency: "Euro (EUR)", number: "0037371525" },
+    ],
+  },
+  northAmerica: {
+    bank: "Bank of America",
+    accountName: "God's Love Tabernacle International Church",
+    accountNumber: "488124373439",
+    zelle: "gltnorthamerica01@gmail.com",
+  },
+};
+
 export const LINKS = {
   youtube: "https://youtube.com/c/GLTChurchWorldwide",
   mixlr: "https://mixlr.com/gltchurchlive",
@@ -449,7 +485,7 @@ export const LINKS = {
   phone: "+2349062807057",
   phoneDisplay: "+234 906 280 7057",
   hqAddress:
-    "Piccadilly Suites, behind Unity Bank, Igbo-Efon Junction, Lekki-Epe Expressway, Lekki, Lagos",
+    "Piccadilly Suites, behind Kon-X, Igbo-Efon Bus Stop, Lekki-Epe Expressway, Lekki, Lagos",
 };
 
 export const mapsLink = (address: string) =>
@@ -461,3 +497,11 @@ export const SOCIALS = {
   facebook: "#TODO-facebook", // TODO: real Facebook page URL
   telegramLeverage: "https://t.me/s/LeverageDevotional",
 };
+
+export const SOCIAL_ICONS = [
+  { icon: FaYoutube, href: SOCIALS.youtube, label: "GLT Church on YouTube" },
+  { icon: FaInstagram, href: SOCIALS.instagram, label: "GLT Church on Instagram" },
+  { icon: FaFacebook, href: SOCIALS.facebook, label: "GLT Church on Facebook" },
+  { icon: FaTelegram, href: SOCIALS.telegramLeverage, label: "Leverage Devotional on Telegram" },
+  // Links still marked TODO are hidden until real profile URLs are added above
+].filter((s) => !s.href.includes("TODO"));
