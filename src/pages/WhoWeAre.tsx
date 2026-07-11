@@ -217,7 +217,7 @@ export default function WhoWeAre() {
       />
       <SlantHeader
         kicker="Who we are"
-        title="Not another denomination. A movement."
+        title={"Not another denomination. A\u00A0movement."}
         sub="An on-going move of God's Spirit to awaken the truth of His Word and the reality of His blessed Holy Spirit."
       />
       <History />

@@ -6,19 +6,21 @@ import {
   Mail,
   BookOpen,
   ExternalLink,
+  Megaphone,
   Play,
 } from "lucide-react";
 import { FaYoutube, FaTelegram } from "react-icons/fa6";
-import { Eyebrow, Reveal, SlantHeader, NewsletterForm } from "../shared";
+import { Eyebrow, Reveal, SlantHeader } from "../shared";
 import Seo from "../Seo";
 import { LINKS, SOCIAL_ICONS, mapsLink } from "../data";
 import posterCrowd from "../assets/CROWD_poster.jpg";
 
 /* ------------------------------ EVENTS ------------------------------ */
 
-const PLACEHOLDER_EVENTS = [
+const RECURRING_EVENTS = [
   {
     tag: "Monthly",
+    mark: "1st Sun",
     title: "Special Miracle Service",
     date: "First Sunday · 8:00am (WAT) at the International HQ · Last Sunday at extensions in Nigeria",
     venue: "GLT Lekki Auditorium (International Headquarters) and all extensions",
@@ -26,21 +28,15 @@ const PLACEHOLDER_EVENTS = [
   },
   {
     tag: "Weekly",
+    mark: "Tue 6:30",
     title: "Bible Study",
     date: "Every Tuesday · 6:30pm (WAT)",
     venue: "GLT Lekki Auditorium and online",
     body: "The Word taught with simplicity, clarity, and power. Bring your Bible, your notes, and your hunger.",
   },
-  {
-    tag: "Coming up",
-    title: "Your next event flyer goes here",
-    date: "Date and time",
-    venue: "Venue",
-    body: "This space is built for your monthly event flyers, with a caption and details to the right. Swap in real flyers as they are released.",
-  },
 ];
 
-function EventFlyer({ tag, title }: { tag: string; title: string }) {
+function EventFlyer({ tag, title, mark }: { tag: string; title: string; mark: string }) {
   return (
     <div
       className="slant-bottom relative flex aspect-[4/5] w-full flex-col justify-between overflow-hidden p-7 text-white"
@@ -51,6 +47,9 @@ function EventFlyer({ tag, title }: { tag: string; title: string }) {
       aria-hidden
     >
       <p className="eyebrow text-[var(--glt-lime)]">{tag}</p>
+      <p className="font-display pointer-events-none select-none text-[clamp(3.4rem,7vw,6rem)] leading-none text-white/10">
+        {mark}
+      </p>
       <div>
         <p className="font-display text-[clamp(1.5rem,2.8vw,2.2rem)] leading-none [overflow-wrap:anywhere]">
           {title}
@@ -76,17 +75,17 @@ export function Events() {
       <SlantHeader
         kicker="Events"
         title="What's on at GLT"
-        sub="Conferences, outreaches, and special gatherings across the GLT family. Check back monthly; better still, let us land in your inbox."
+        sub="Conferences, outreaches, and special gatherings across the GLT family. Check back monthly, or follow our announcements for flyers as they drop."
       />
       <section className="mx-auto max-w-6xl space-y-16 px-5 py-20 md:py-28">
-        {PLACEHOLDER_EVENTS.map((ev, i) => (
+        {RECURRING_EVENTS.map((ev, i) => (
           <Reveal key={ev.title}>
             <article
               className={`grid items-center gap-8 md:grid-cols-[0.85fr_1.15fr] [&>*]:min-w-0 ${
                 i % 2 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <EventFlyer tag={ev.tag} title={ev.title} />
+              <EventFlyer tag={ev.tag} title={ev.title} mark={ev.mark} />
               <div>
                 <p className="eyebrow" style={{ color: "var(--glt-green)" }}>
                   {ev.tag}
@@ -109,22 +108,38 @@ export function Events() {
             </article>
           </Reveal>
         ))}
-      </section>
-      <section className="slant-top text-white" style={{ background: "var(--glt-ink)" }}>
-        <div className="mx-auto max-w-4xl px-5 pb-20 pt-28 text-center">
-          <Reveal>
-            <h2 className="font-display text-[clamp(1.8rem,3.4vw,2.8rem)]">
-              Never miss what God is doing
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-white/80">
-              Subscribe to our monthly email and get upcoming events,
-              announcements, and resources delivered to you.
-            </p>
-            <div className="mx-auto mt-8 max-w-md text-left">
-              <NewsletterForm dark />
+        <Reveal>
+          <div
+            className="slant-bottom grid gap-8 p-8 text-white md:grid-cols-[1fr_auto] md:items-center md:p-12"
+            style={{
+              background:
+                "linear-gradient(112deg, var(--glt-green-deep) 0%, var(--glt-green) 70%)",
+            }}
+          >
+            <div>
+              <p className="eyebrow mb-3 text-[var(--glt-mint)]">
+                <Megaphone size={14} className="mr-2 inline" aria-hidden />
+                Fresh flyers, first
+              </p>
+              <h2 className="font-display text-[clamp(1.6rem,3vw,2.4rem)]">
+                New event flyers land in our announcements
+              </h2>
+              <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white">
+                Conferences, outreaches, and special gatherings are announced as
+                they are released. The announcements channel is always the
+                first place they land.
+              </p>
             </div>
-          </Reveal>
-        </div>
+            <a
+              href={LINKS.announcements}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-give shrink-0 self-start md:self-center"
+            >
+              Read announcements
+            </a>
+          </div>
+        </Reveal>
       </section>
     </>
   );
