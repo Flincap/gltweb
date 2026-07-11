@@ -39,7 +39,7 @@ const RECURRING_EVENTS = [
 function EventFlyer({ tag, title, mark }: { tag: string; title: string; mark: string }) {
   return (
     <div
-      className="slant-bottom relative flex aspect-[4/5] w-full flex-col justify-between overflow-hidden p-7 text-white"
+      className="slant-bottom relative flex aspect-[4/5] w-full flex-col justify-between overflow-hidden px-7 pt-7 pb-[clamp(3.5rem,7vw,6.5rem)] text-white"
       style={{
         background:
           "linear-gradient(150deg, var(--glt-ink) 0%, var(--glt-ink-soft) 55%, var(--glt-green-deep) 130%)",
