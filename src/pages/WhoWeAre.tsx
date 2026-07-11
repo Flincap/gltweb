@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
 import Seo from "../Seo";
-import { PILLARS } from "../data";
+import { ONIONS } from "../data";
 import setman from "../assets/setman.jpg";
+// TODO: replace src/assets/onions.jpg with the approved photo of Daddy with the onions
+// (Google Drive: https://drive.google.com/file/d/1rpOukbi3aLPBC05oWrX5VlIFl2DvdNKI/view)
+import onionsPhoto from "../assets/onions.jpg";
 
 function History() {
   return (
@@ -12,7 +15,7 @@ function History() {
         <Reveal>
           <Eyebrow>A brief history</Eyebrow>
           <h2 className="font-display text-[clamp(1.9rem,4vw,3.2rem)]">
-            From ten people
+            From seven people
             <br />
             in a small room
           </h2>
@@ -20,7 +23,7 @@ function History() {
             {[
               ["Oct 2005", "The Lord speaks expressly in Abuja"],
               ["Nov 11, 2005", "Obedience: the move to Ile-Ife"],
-              ["Feb 18, 2007", "GLT begins with about ten people"],
+              ["Feb 18, 2007", "GLT begins with about seven people"],
               ["Today", "Thousands, with extensions on 3 continents"],
             ].map(([d, t]) => (
               <p key={d} className="py-2 text-sm">
@@ -46,7 +49,7 @@ function History() {
             <p>
               14 months after their departure from Abuja, on the 18th of
               February 2007, God's Love Tabernacle International Church kicked
-              off in a small room in Ile-Ife with about ten people in
+              off in a small room in Ile-Ife with about seven people in
               attendance. In one of his interviews on the vision of GLT, Pastor
               Segun said: "I like to stress this, GLT is not another
               denomination, but a movement; an on-going move of God's Spirit to
@@ -56,7 +59,7 @@ function History() {
               been so evident on this movement."
             </p>
             <p>
-              Remember that it started with ten people in a small room. The
+              Remember that it started with seven people in a small room. The
               testimony has been from tens to hundreds, hundreds to thousands.
               The church now has her own property, an auditorium which seats on
               average one thousand, seven hundred people, with various
@@ -100,17 +103,17 @@ function VisionMission() {
   );
 }
 
-function Pillars() {
+function Onions() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 md:py-28">
       <Reveal>
-        <Eyebrow>The Pillars of GLT</Eyebrow>
+        <Eyebrow>The Onions of GLT</Eyebrow>
         <h2 className="font-display max-w-2xl text-[clamp(1.9rem,4vw,3.2rem)]">
           Eleven things that make this house, this house
         </h2>
       </Reveal>
       <div className="mt-12 grid gap-px overflow-hidden border border-[var(--glt-line)] bg-[var(--glt-line)] sm:grid-cols-2 lg:grid-cols-3">
-        {PILLARS.map((o, i) => (
+        {ONIONS.map((o, i) => (
           <Reveal key={o.title} delay={(i % 3) * 90} className="h-full">
             <article className="h-full bg-white p-7 transition hover:bg-[var(--glt-leaf)]">
               <p className="font-display text-sm" style={{ color: "var(--glt-green-deep)" }}>
@@ -138,6 +141,21 @@ function Pillars() {
           </p>
         </div>
       </div>
+      <Reveal delay={140}>
+        <figure className="mt-12">
+          <img
+            src={onionsPhoto}
+            alt="Apostle Segun Obadje teaching on the Onions of GLT"
+            className="w-full max-w-4xl border-8 border-[var(--glt-leaf)] object-cover md:mx-auto"
+            loading="lazy"
+            width={1100}
+            height={1320}
+          />
+          <figcaption className="mt-4 text-center text-sm text-[var(--glt-ink-soft)]">
+            Daddy with the Onions of GLT
+          </figcaption>
+        </figure>
+      </Reveal>
     </section>
   );
 }
@@ -194,7 +212,7 @@ export default function WhoWeAre() {
     <>
       <Seo
         title="Who We Are | GLT Church"
-        description="GLT is not another denomination but a movement: from ten people in Ile-Ife in 2007 to thousands across Africa, Europe and North America. Meet Apostle Segun and Pastor Funke Obadje."
+        description="GLT is not another denomination but a movement: from seven people in Ile-Ife in 2007 to thousands across Africa, Europe and North America. Meet Apostle Segun and Pastor Funke Obadje."
         path="/who-we-are"
       />
       <SlantHeader
@@ -204,7 +222,7 @@ export default function WhoWeAre() {
       />
       <History />
       <VisionMission />
-      <Pillars />
+      <Onions />
       <Setman />
     </>
   );

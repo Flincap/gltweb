@@ -8,10 +8,10 @@ import {
   ExternalLink,
   Play,
 } from "lucide-react";
-import { FaYoutube, FaInstagram, FaFacebook, FaTelegram } from "react-icons/fa6";
+import { FaYoutube, FaTelegram } from "react-icons/fa6";
 import { Eyebrow, Reveal, SlantHeader, NewsletterForm } from "../shared";
 import Seo from "../Seo";
-import { LINKS, SOCIALS, mapsLink } from "../data";
+import { LINKS, SOCIAL_ICONS, mapsLink } from "../data";
 import posterCrowd from "../assets/CROWD_poster.jpg";
 
 /* ------------------------------ EVENTS ------------------------------ */
@@ -52,7 +52,7 @@ function EventFlyer({ tag, title }: { tag: string; title: string }) {
     >
       <p className="eyebrow text-[var(--glt-lime)]">{tag}</p>
       <div>
-        <p className="font-display text-[clamp(1.7rem,2.8vw,2.4rem)] leading-none [overflow-wrap:break-word]">
+        <p className="font-display text-[clamp(1.5rem,2.8vw,2.2rem)] leading-none [overflow-wrap:anywhere]">
           {title}
         </p>
         <p className="eyebrow mt-4 text-white/70">GLT Church Worldwide</p>
@@ -82,7 +82,7 @@ export function Events() {
         {PLACEHOLDER_EVENTS.map((ev, i) => (
           <Reveal key={ev.title}>
             <article
-              className={`grid items-center gap-8 md:grid-cols-[0.85fr_1.15fr] ${
+              className={`grid items-center gap-8 md:grid-cols-[0.85fr_1.15fr] [&>*]:min-w-0 ${
                 i % 2 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
@@ -94,12 +94,12 @@ export function Events() {
                 <h2 className="font-display mt-2 text-[clamp(1.7rem,3.2vw,2.6rem)]">
                   {ev.title}
                 </h2>
-                <p className="mt-4 flex items-center gap-2.5 text-sm font-semibold">
-                  <CalendarDays size={16} style={{ color: "var(--glt-green)" }} aria-hidden />
+                <p className="mt-4 flex items-start gap-2.5 text-sm font-semibold [overflow-wrap:anywhere]">
+                  <CalendarDays size={16} className="mt-0.5 shrink-0" style={{ color: "var(--glt-green)" }} aria-hidden />
                   {ev.date}
                 </p>
-                <p className="mt-2 flex items-center gap-2.5 text-sm text-[var(--glt-ink-soft)]">
-                  <MapPin size={16} style={{ color: "var(--glt-green)" }} aria-hidden />
+                <p className="mt-2 flex items-start gap-2.5 text-sm text-[var(--glt-ink-soft)] [overflow-wrap:anywhere]">
+                  <MapPin size={16} className="mt-0.5 shrink-0" style={{ color: "var(--glt-green)" }} aria-hidden />
                   {ev.venue}
                 </p>
                 <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[var(--glt-ink-soft)]">
@@ -298,12 +298,7 @@ export function Contact() {
     window.location.href = `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
     setSent(true);
   };
-  const socials = [
-    { icon: FaYoutube, href: SOCIALS.youtube, label: "GLT Church on YouTube" },
-    { icon: FaInstagram, href: SOCIALS.instagram, label: "GLT Church on Instagram" },
-    { icon: FaFacebook, href: SOCIALS.facebook, label: "GLT Church on Facebook" },
-    { icon: FaTelegram, href: SOCIALS.telegramLeverage, label: "Leverage Devotional on Telegram" },
-  ];
+  const socials = SOCIAL_ICONS;
   return (
     <>
       <Seo

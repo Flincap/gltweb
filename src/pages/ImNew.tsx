@@ -74,7 +74,7 @@ export default function ImNew() {
                   <span>
                     <strong>GLT Lekki Auditorium (our international headquarters)</strong>
                     <br />
-                    Piccadilly Suites, behind Unity Bank, Igbo-Efon Junction,
+                    Piccadilly Suites, behind Kon-X, Igbo-Efon Bus Stop,
                     Lekki-Epe Expressway, Lekki, Lagos
                   </span>
                 </p>

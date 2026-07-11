@@ -10,7 +10,7 @@ npm run dev
 npm run build        # outputs to dist/
 
 ## Where things live
-- src/data.ts        -> all extensions, pillars, FAQs, links, social URLs (edit here to update content)
+- src/data.ts        -> all extensions, the Onions, giving details, FAQs, links, social URLs (edit here to update content)
 - src/pages/         -> Home, WhoWeAre, Extensions, ImNew, Other (Events/Sermons/Contact)
 - src/shared.tsx     -> nav, footer, newsletter form, give dialog, slant header
 - src/Seo.tsx        -> per-route titles/meta (site URL constant lives here)
@@ -21,5 +21,5 @@ npm run build        # outputs to dist/
 1. src/data.ts -> SOCIALS.instagram (#TODO-instagram)
 2. src/data.ts -> SOCIALS.facebook (#TODO-facebook)
 3. src/data.ts -> LINKS.newsletterEndpoint (#TODO-newsletter-endpoint). Create a free Formspree form and paste its endpoint; the form already POSTs JSON {email}.
-4. src/shared.tsx -> Give dialog bank details.
+4. src/assets/onions.jpg -> replace with the approved photo of Daddy with the Onions (Google Drive link in WhoWeAre.tsx).
 5. When the glt.church domain is attached: update the SITE constant in src/Seo.tsx, the URLs in index.html OG/Twitter tags, public/robots.txt and public/sitemap.xml (currently gltweb.vercel.app).
