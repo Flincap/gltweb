@@ -415,7 +415,8 @@ export function Footer({ onGive }: { onGive: () => void }) {
           <ul className="space-y-3 text-sm text-white/85">
             <li>Sundays · 7:45am &amp; 10:00am (WAT)</li>
             <li>Special Miracle Service · 1st Sundays, 8:00am (HQ)</li>
-            <li>Bible Study · Tuesdays, 6:30pm</li>
+            <li>Bible Study · Tuesdays, 6:30pm (HQ)</li>
+            <li>Bible Study · Wednesdays at extensions in Nigeria</li>
           </ul>
           <p className="eyebrow mb-3 mt-7" style={{ color: "var(--glt-lime)" }}>
             International Headquarters

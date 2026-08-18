@@ -61,7 +61,10 @@ export default function ImNew() {
                   the international headquarters. Extensions in Nigeria hold
                   theirs on the last Sunday of the month.
                 </p>
-                <p>Tuesdays: we have our Bible Study by 6:30pm.</p>
+                <p>
+                  Tuesdays: we have our Bible Study by 6:30pm. Extensions
+                  in Nigeria hold theirs on Wednesdays.
+                </p>
               </div>
               <div className="mt-8 border-t border-[var(--glt-line)] pt-7">
                 <Eyebrow>Where we meet</Eyebrow>

@@ -30,7 +30,7 @@ const RECURRING_EVENTS = [
     tag: "Weekly",
     mark: "Tue 6:30",
     title: "Bible Study",
-    date: "Every Tuesday · 6:30pm (WAT)",
+    date: "Tuesdays · 6:30pm (WAT) at the HQ · Wednesdays at extensions in Nigeria",
     venue: "GLT Lekki Auditorium and online",
     body: "The Word taught with simplicity, clarity, and power. Bring your Bible, your notes, and your hunger.",
   },

@@ -71,7 +71,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:15am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 6:00pm – 7:35pm",
+    bibleStudy: "Wed 6:00pm – 7:35pm",
   },
   {
     name: "Egbeda",
@@ -90,7 +90,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "Sunday Service", time: "Sun 9:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 6:00pm – 8:00pm",
+    bibleStudy: "Wed 6:00pm – 8:00pm",
   },
   {
     name: "Ajah",
@@ -125,7 +125,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "Sunday Service", time: "Sun 9:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 6:00pm – 8:00pm",
+    bibleStudy: "Wed 6:00pm – 8:00pm",
   },
   {
     name: "Abuja",
@@ -145,7 +145,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 11:30am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 6:00pm – 7:45pm",
+    bibleStudy: "Wed 6:00pm – 7:45pm",
   },
   {
     name: "Gwagwalada",
@@ -164,7 +164,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "Sunday Service", time: "Sun 9:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 6:00pm – 8:00pm",
+    bibleStudy: "Wed 6:00pm – 8:00pm",
   },
   {
     name: "Ibadan",
@@ -185,11 +185,12 @@ export const EXTENSIONS: Extension[] = [
       { label: "3rd Service", time: "Sun 12:15pm" },
       { label: "SMS (Last Sun)", time: "7:45am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:45pm",
+    bibleStudy: "Wed 5:30pm – 7:45pm",
   },
   {
-    name: "Challenge, Ibadan",
-    city: "Challenge, Ibadan",
+    name: "New Garage",
+    instagram: "gltnewgarage",
+    city: "New Garage, Ibadan",
     country: "Nigeria",
     flag: "🇳🇬",
     region: "Africa",
@@ -203,7 +204,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 12:00pm" },
       { label: "SMS (Last Sun)", time: "10:00am" },
     ],
-    bibleStudy: "Tue 5:50pm – 6:30pm",
+    bibleStudy: "Wed 5:50pm – 6:30pm",
     note: "Members also join HQ online",
   },
   {
@@ -223,7 +224,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "Sunday Service", time: "Sun 9:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:30pm",
+    bibleStudy: "Wed 5:30pm – 7:30pm",
   },
   {
     name: "Ile-Ife",
@@ -243,7 +244,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:30pm",
+    bibleStudy: "Wed 5:30pm – 7:30pm",
   },
   {
     name: "Phase 2, OAUTHC",
@@ -263,7 +264,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 8:00pm",
+    bibleStudy: "Wed 5:30pm – 8:00pm",
   },
   {
     name: "Osogbo",
@@ -283,7 +284,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:30pm",
+    bibleStudy: "Wed 5:30pm – 7:30pm",
   },
   {
     name: "Ilesa",
@@ -303,7 +304,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:30pm",
+    bibleStudy: "Wed 5:30pm – 7:30pm",
     note: "Members also join HQ online",
   },
   {
@@ -323,7 +324,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:00am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:45pm",
+    bibleStudy: "Wed 5:30pm – 7:45pm",
   },
   {
     name: "Ondo",
@@ -342,7 +343,7 @@ export const EXTENSIONS: Extension[] = [
       { label: "2nd Service", time: "Sun 10:15am" },
       { label: "SMS (Last Sun)", time: "8:00am" },
     ],
-    bibleStudy: "Tue 5:30pm – 7:30pm",
+    bibleStudy: "Wed 5:30pm – 7:30pm",
   },
   {
     name: "Bayelsa",
@@ -361,7 +362,38 @@ export const EXTENSIONS: Extension[] = [
       { label: "Sunday Service", time: "Sun 9:00am" },
       { label: "SMS (Last Sun)", time: "9:00am" },
     ],
-    bibleStudy: "Tue 5:00pm – 7:00pm",
+    bibleStudy: "Wed 5:00pm – 7:00pm",
+  },
+  {
+    name: "Enugu",
+    instagram: "gltenugu",
+    city: "Enugu",
+    country: "Nigeria",
+    flag: "🇳🇬",
+    region: "Africa",
+    smr: "Pastor Paul and Pastor Kemi Augustine",
+    address:
+      "148 Agbani Road, Igbariam Bus Stop, Opposite Kilimanjaro, Beside Emmanuel Plaza, Enugu",
+    tz: "WAT",
+    services: [
+      { label: "Sunday Service", time: "Sun 8:00am" },
+      { label: "SMS (Last Sun)", time: "8:00am" },
+    ],
+    bibleStudy: "Wed 5:30pm",
+  },
+  {
+    name: "Accra",
+    instagram: "gltaccra",
+    city: "North Legon, Accra",
+    country: "Ghana",
+    flag: "🇬🇭",
+    region: "Africa",
+    smr: "Pastor Igbekeleoluwa Moses",
+    address:
+      "Teamaa Trading Enterprise, Opposite PUMA Filling Station, Agbogba-Ashongman Road, North Legon, Accra",
+    tz: "GMT",
+    services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
+    bibleStudy: "Wed 5:30pm",
   },
   {
     name: "Birmingham",
@@ -392,6 +424,19 @@ export const EXTENSIONS: Extension[] = [
     tz: "CT",
     services: [{ label: "Sunday Service", time: "Sun 9:30am" }],
     bibleStudy: "Tue 7:30pm (online)",
+  },
+  {
+    name: "Dallas",
+    instagram: "gltdallas",
+    city: "Richardson, Texas",
+    country: "United States",
+    flag: "🇺🇸",
+    region: "North America",
+    smr: "Pastor Dewunmi and Pastor Abby Adediji",
+    address: "777 S Central Expressway, Suite 7T, Richardson, TX 75080, USA",
+    tz: "CT",
+    services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
+    bibleStudy: "Wed 6:30pm",
   },
   {
     name: "Calgary",

@@ -134,7 +134,10 @@ function JoinUs() {
               headquarters. Extensions in Nigeria hold theirs on the last
               Sunday of the month.
             </p>
-            <p>Tuesdays: we have our Bible Study by 6:30pm.</p>
+            <p>
+              Tuesdays: we have our Bible Study by 6:30pm. Extensions in
+              Nigeria hold theirs on Wednesdays.
+            </p>
           </div>
         </Reveal>
 
@@ -165,7 +168,7 @@ function Happening() {
     {
       icon: Church,
       title: "Weekly Services",
-      body: "Sundays at 7:45am and 10:00am, Bible Study on Tuesdays at 6:30pm, and the Special Miracle Service every first Sunday at the HQ (last Sunday at extensions in Nigeria).",
+      body: "Sundays at 7:45am and 10:00am, Bible Study on Tuesdays at 6:30pm at the HQ and Wednesdays at extensions in Nigeria, and the Special Miracle Service every first Sunday at the HQ (last Sunday at extensions in Nigeria).",
       to: "/im-new",
       label: "Plan a visit",
     },
