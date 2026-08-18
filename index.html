@@ -6,34 +6,89 @@
     <title>GLT Church | God's Love Tabernacle International Church</title>
     <meta
       name="description"
-      content="GLT Church: a people of God's love. Join us Sundays at 7:45am & 10:00am and Tuesdays at 6:30pm (WAT) in Lekki, Lagos, with extensions across Africa, Europe and North America."
+      content="GLT Church: a people of God's love. Join us Sundays at 7:45am &amp; 10:00am and Tuesdays at 6:30pm (WAT) in Lekki, Lagos, with extensions across Africa, Europe and North America."
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#257f18" />
+    <link rel="canonical" href="https://www.glt.church/" />
 
-    <!-- Open Graph -->
+    <!--
+      Icons. Order matters: browsers that support SVG icons take the first
+      match, so the vector mark must come before the PNG fallbacks.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="mask-icon" href="/mask-icon.svg" color="#257f18" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#257f18" />
+    <meta name="apple-mobile-web-app-title" content="GLT Church" />
+    <meta name="application-name" content="GLT Church" />
+
+    <!--
+      Link previews. WhatsApp, iMessage, Facebook, LinkedIn and Slack read this
+      static HTML and never run JavaScript, so these tags must be correct here.
+      All URLs are absolute - most scrapers ignore relative paths.
+    -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="GLT Church" />
+    <meta property="og:locale" content="en_NG" />
     <meta property="og:title" content="GLT Church | God's Love Tabernacle International Church" />
     <meta
       property="og:description"
-      content="A people of God's love. Sundays 7:45am & 10:00am, Tuesdays 6:30pm (WAT), Lekki, Lagos. Extensions across Africa, Europe and North America."
+      content="A people of God's love. Sundays 7:45am &amp; 10:00am, Tuesdays 6:30pm (WAT), Lekki, Lagos. Extensions across Africa, Europe and North America."
     />
-    <meta property="og:url" content="https://gltweb.vercel.app/" />
-    <meta property="og:image" content="https://gltweb.vercel.app/og-image.jpg" />
+    <meta property="og:url" content="https://www.glt.church/" />
+    <meta property="og:image" content="https://www.glt.church/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://www.glt.church/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="GLT Church congregation in worship, with the GLT emblem and the words A People of God's Love."
+    />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="GLT Church | God's Love Tabernacle International Church" />
     <meta
       name="twitter:description"
-      content="A people of God's love. Sundays 7:45am & 10:00am, Tuesdays 6:30pm (WAT), Lekki, Lagos. Extensions across Africa, Europe and North America."
+      content="A people of God's love. Sundays 7:45am &amp; 10:00am, Tuesdays 6:30pm (WAT), Lekki, Lagos. Extensions across Africa, Europe and North America."
     />
-    <meta name="twitter:image" content="https://gltweb.vercel.app/og-image.jpg" />
+    <meta name="twitter:image" content="https://www.glt.church/og-image.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="GLT Church congregation in worship, with the GLT emblem and the words A People of God's Love."
+    />
+
+    <!-- Rich result for search: service times, address and contact details -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Church",
+        "name": "God's Love Tabernacle International Church",
+        "alternateName": "GLT Church",
+        "url": "https://www.glt.church/",
+        "logo": "https://www.glt.church/icon-512.png",
+        "image": "https://www.glt.church/og-image.jpg",
+        "description": "A people of God's love. GLT Church is a movement awakening the truth of God's Word and the reality of His blessed Holy Spirit, with extensions across Africa, Europe and North America.",
+        "email": "enquiries@glt.church",
+        "telephone": "+2349062807057",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Piccadilly Suites, behind Kon-X, Igbo-Efon Bus Stop, Lekki-Epe Expressway",
+          "addressLocality": "Lekki",
+          "addressRegion": "Lagos",
+          "addressCountry": "NG"
+        },
+        "sameAs": [
+          "https://youtube.com/c/GLTChurchWorldwide",
+          "https://www.instagram.com/gltlekki/",
+          "https://x.com/gltchurch"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -6,6 +6,7 @@ import WhoWeAre from "./pages/WhoWeAre";
 import Extensions from "./pages/Extensions";
 import ImNew from "./pages/ImNew";
 import { Events, Sermons, Contact } from "./pages/Other";
+import Admin from "./pages/Admin";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ export default function App() {
           {/* Old links keep working */}
           <Route path="/resources" element={<Navigate to="/sermons" replace />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

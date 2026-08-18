@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gltweb.vercel.app/</loc>
+    <loc>https://www.glt.church/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/who-we-are</loc>
+    <loc>https://www.glt.church/who-we-are</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/extensions</loc>
+    <loc>https://www.glt.church/extensions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/im-new</loc>
+    <loc>https://www.glt.church/im-new</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/events</loc>
+    <loc>https://www.glt.church/events</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/sermons</loc>
+    <loc>https://www.glt.church/sermons</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gltweb.vercel.app/contact</loc>
+    <loc>https://www.glt.church/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

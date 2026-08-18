@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarDays, Megaphone, Church } from "lucide-react";
-import { Eyebrow, Reveal } from "../shared";
+import { Eyebrow, JoinLiveButton, Reveal } from "../shared";
 import Seo from "../Seo";
-import { LINKS } from "../data";
+import { EXTENSIONS, LINKS } from "../data";
 import videoCrowd from "../assets/CROWD.mp4";
 import videoAso from "../assets/ASO.mp4";
 import videoPfo from "../assets/PFO.mp4";
@@ -82,14 +82,7 @@ function Hero() {
           <Link to="/im-new" className="btn btn-solid">
             I'm New <ArrowRight size={16} aria-hidden />
           </Link>
-          <a
-            href={LINKS.mixlr}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-outline-light"
-          >
-            Join Live Online
-          </a>
+          <JoinLiveButton />
           <Link to="/sermons" className="btn btn-outline-light">
             Sermons
           </Link>
@@ -121,7 +114,8 @@ function JoinUs() {
       className="slant-bottom relative z-10 -mt-px text-white"
       style={{ background: "var(--glt-green)" }}
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-24 pt-16 md:grid-cols-[1.1fr_1fr] md:pb-28 md:pt-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-24 pt-16 md:grid-cols-[1.25fr_1fr] md:gap-14 md:pb-28 md:pt-20">
+        {/* Left: the international headquarters */}
         <Reveal>
           <Eyebrow light>Join us for church</Eyebrow>
           <h2 className="font-display text-[clamp(2rem,4.2vw,3.4rem)]">
@@ -129,9 +123,10 @@ function JoinUs() {
             <br />
             Tuesdays 6:30pm <span className="text-[var(--glt-mint)]">(WAT)</span>
           </h2>
-        </Reveal>
-        <Reveal delay={120}>
-          <div className="space-y-4 text-[15px] leading-relaxed text-white md:pt-2">
+          <p className="eyebrow mt-5 text-[0.68rem] text-[var(--glt-mint)]">
+            Service times at our International Headquarters, Lekki, Lagos
+          </p>
+          <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-white">
             <p>
               We worship on Sundays by 7:45am for 1st service and 10:00am (WAT)
               for 2nd service. Join us for the Special Miracle Service (SMS)
@@ -140,7 +135,22 @@ function JoinUs() {
               Sunday of the month.
             </p>
             <p>Tuesdays: we have our Bible Study by 6:30pm.</p>
-            <Link to="/extensions" className="btn btn-outline-light mt-2">
+          </div>
+        </Reveal>
+
+        {/* Right: everywhere else */}
+        <Reveal delay={120}>
+          <div className="h-full border-t border-white/25 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0 lg:pl-12">
+            <Eyebrow light>Near you</Eyebrow>
+            <h3 className="font-display text-[clamp(1.5rem,2.6vw,2.1rem)]">
+              Join a service at a GLT extension near you
+            </h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-white">
+              We gather in over {EXTENSIONS.length} locations across Africa,
+              Europe, and North America. Service times vary by extension, so
+              check yours before you set out.
+            </p>
+            <Link to="/extensions" className="btn btn-outline-light mt-6">
               Find a GLT near you <ArrowRight size={16} aria-hidden />
             </Link>
           </div>

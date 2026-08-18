@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MapPin, Phone, Mail, Clock, BookOpen, Search, ExternalLink } from "lucide-react";
-import { Eyebrow, Reveal, SlantHeader } from "../shared";
+import { Eyebrow, JoinLiveButton, Reveal, SlantHeader } from "../shared";
 import Seo from "../Seo";
-import { EXTENSIONS, mapsLink, type Extension } from "../data";
+import { EXTENSIONS, extensionSocials, mapsLink, type Extension } from "../data";
 
 const REGIONS = ["All", "Africa", "Europe", "North America"] as const;
 
@@ -46,6 +46,7 @@ function CountUp({ to, duration = 1200 }: { to: number; duration?: number }) {
 }
 
 function ExtensionCard({ ext }: { ext: Extension }) {
+  const socials = extensionSocials(ext);
   return (
     <article className="card-line flex h-full flex-col p-7">
       <div className="flex items-start justify-between gap-3">
@@ -125,6 +126,27 @@ function ExtensionCard({ ext }: { ext: Extension }) {
           </a>
         )}
       </div>
+
+      {socials.length > 0 && (
+        <div className="mt-5 flex items-center gap-2.5 border-t border-[var(--glt-line)] pt-5">
+          <span className="eyebrow text-[0.6rem] text-[var(--glt-ink-soft)]">
+            Follow
+          </span>
+          {socials.map((s) => (
+            <a
+              key={s.key}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              title={s.label}
+              className="rounded-full border border-[var(--glt-line)] p-2 text-[var(--glt-ink)] transition hover:border-[var(--glt-green)] hover:bg-[var(--glt-green)] hover:text-white"
+            >
+              <s.icon size={15} aria-hidden />
+            </a>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
@@ -139,7 +161,10 @@ export default function Extensions() {
       const q = query.trim().toLowerCase();
       const matches =
         !q ||
-        [e.name, e.city, e.country, e.address].join(" ").toLowerCase().includes(q);
+        [e.name, e.city, e.country, e.address, e.instagram ?? "", e.x ?? ""]
+          .join(" ")
+          .toLowerCase()
+          .includes(q);
       return inRegion && matches;
     });
   }, [region, query]);
@@ -247,14 +272,7 @@ export default function Extensions() {
               wherever you are in the world.
             </p>
           </div>
-          <a
-            href="https://mixlr.com/gltchurchlive"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-give shrink-0"
-          >
-            Join Live Online
-          </a>
+          <JoinLiveButton className="btn btn-give shrink-0" />
         </div>
       </section>
     </>

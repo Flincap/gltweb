@@ -12,7 +12,7 @@ import {
 import { FaYoutube, FaTelegram } from "react-icons/fa6";
 import { Eyebrow, Reveal, SlantHeader } from "../shared";
 import Seo from "../Seo";
-import { LINKS, SOCIAL_ICONS, mapsLink } from "../data";
+import { CONTACT_LOCATIONS, LINKS, SOCIAL_ICONS, mapsLink } from "../data";
 import posterCrowd from "../assets/CROWD_poster.jpg";
 
 /* ------------------------------ EVENTS ------------------------------ */
@@ -297,21 +297,111 @@ export function Sermons() {
 
 /* ------------------------------ CONTACT ------------------------------ */
 
+/**
+ * Strips CR/LF and control characters and caps length before anything reaches
+ * the mailto: URL. Without this, a newline in the name or subject field could
+ * inject extra mail headers (cc:, bcc:) into the handoff.
+ */
+function clean(value: FormDataEntryValue | null, max: number) {
+  return String(value ?? "")
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\u0000-\u001f\u007f]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, max);
+}
+
+/** Same, but keeps paragraph breaks for the message body. */
+function cleanMultiline(value: FormDataEntryValue | null, max: number) {
+  return String(value ?? "")
+    .replace(/\r\n?/g, "\n")
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\u0000-\u0009\u000b-\u001f\u007f]+/g, " ")
+    .trim()
+    .slice(0, max);
+}
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const submit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "fallback">("idle");
+  const [error, setError] = useState("");
+  // Bots fill every field they find; humans never see this one.
+  const [trap, setTrap] = useState("");
+  const [openedAt] = useState(() => Date.now());
+
+  /** Last resort when the API is unreachable: hand off to the mail client. */
+  const mailtoHandoff = (f: Record<string, string>) => {
     const subject = encodeURIComponent(
-      `[Website] ${fd.get("subject") || "Enquiry"} — ${fd.get("name")}`
+      `[Website] ${f.topic} — ${f.location} — ${f.name}`
     );
     const body = encodeURIComponent(
-      `Name: ${fd.get("name")}\nEmail: ${fd.get("email")}\nPhone: ${
-        fd.get("phone") || "-"
-      }\n\n${fd.get("message")}`
+      `Name: ${f.name}\nEmail: ${f.email}\nPhone: ${f.phone || "-"}\nExtension: ${f.location}\nSubject: ${f.topic}\n\n${f.message}`
     );
     window.location.href = `mailto:${LINKS.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("fallback");
+  };
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+
+    // Honeypot + a minimum dwell time: cheap, no third-party script, no cookies.
+    if (trap || Date.now() - openedAt < 2500) {
+      setError("That didn't go through. Please try again in a moment.");
+      return;
+    }
+
+    const fd = new FormData(e.currentTarget);
+    const f = {
+      name: clean(fd.get("name"), 80),
+      email: clean(fd.get("email"), 120),
+      phone: clean(fd.get("phone"), 40),
+      topic: clean(fd.get("subject"), 60) || "Enquiry",
+      location: clean(fd.get("location"), 80) || CONTACT_LOCATIONS[0],
+      message: cleanMultiline(fd.get("message"), 4000),
+    };
+
+    if (!f.name || !f.message || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) {
+      setError("Please check your name, email address, and message.");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({
+          name: f.name,
+          email: f.email,
+          phone: f.phone,
+          subject: f.topic,
+          location: f.location,
+          message: f.message,
+          website: trap,
+          elapsed: Date.now() - openedAt,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        e.currentTarget.reset();
+        return;
+      }
+
+      // 4xx means the server looked at it and said no; show why.
+      if (res.status >= 400 && res.status < 500) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Please check the form and try again.");
+        setStatus("idle");
+        return;
+      }
+
+      // 5xx or unconfigured: fall back rather than lose the message.
+      mailtoHandoff(f);
+    } catch {
+      mailtoHandoff(f);
+    }
   };
   const socials = SOCIAL_ICONS;
   return (
@@ -331,24 +421,47 @@ export function Contact() {
           <Reveal>
             <div className="card-line p-8 md:p-10">
               <Eyebrow>Send a message</Eyebrow>
-              <form onSubmit={submit} className="mt-6 grid gap-5 sm:grid-cols-2">
+              <form onSubmit={submit} noValidate className="mt-6 grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="flabel" htmlFor="c-name">
                     Name
                   </label>
-                  <input id="c-name" name="name" required className="field" autoComplete="name" />
+                  <input
+                    id="c-name"
+                    name="name"
+                    required
+                    maxLength={80}
+                    className="field"
+                    autoComplete="name"
+                  />
                 </div>
                 <div>
                   <label className="flabel" htmlFor="c-email">
                     Email
                   </label>
-                  <input id="c-email" name="email" type="email" required className="field" autoComplete="email" />
+                  <input
+                    id="c-email"
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={120}
+                    className="field"
+                    autoComplete="email"
+                    inputMode="email"
+                  />
                 </div>
                 <div>
                   <label className="flabel" htmlFor="c-phone">
                     Phone (optional)
                   </label>
-                  <input id="c-phone" name="phone" className="field" autoComplete="tel" />
+                  <input
+                    id="c-phone"
+                    name="phone"
+                    maxLength={40}
+                    className="field"
+                    autoComplete="tel"
+                    inputMode="tel"
+                  />
                 </div>
                 <div>
                   <label className="flabel" htmlFor="c-subject">
@@ -363,6 +476,31 @@ export function Contact() {
                   </select>
                 </div>
                 <div className="sm:col-span-2">
+                  <label className="flabel" htmlFor="c-location">
+                    Which GLT are you writing to?
+                  </label>
+                  <select id="c-location" name="location" className="field">
+                    {CONTACT_LOCATIONS.map((loc) => (
+                      <option key={loc}>{loc}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Honeypot: hidden from people, irresistible to bots. */}
+                <div className="hidden" aria-hidden>
+                  <label htmlFor="c-website">Leave this field empty</label>
+                  <input
+                    id="c-website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={trap}
+                    onChange={(ev) => setTrap(ev.target.value)}
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
                   <label className="flabel" htmlFor="c-message">
                     Message
                   </label>
@@ -371,16 +509,31 @@ export function Contact() {
                     name="message"
                     rows={6}
                     required
+                    maxLength={4000}
                     className="field resize-y"
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <button type="submit" className="btn btn-solid w-full sm:w-auto">
-                    Send message
+                  <button
+                    type="submit"
+                    className="btn btn-solid w-full sm:w-auto"
+                    disabled={status === "sending"}
+                  >
+                    {status === "sending" ? "Sending…" : "Send message"}
                   </button>
-                  {sent && (
+                  {status === "sent" && (
+                    <p className="mt-3 text-sm font-semibold" style={{ color: "var(--glt-green-deep)" }} role="status">
+                      Thank you. Your message has reached us and we'll be in touch soon.
+                    </p>
+                  )}
+                  {status === "fallback" && (
                     <p className="mt-3 text-sm font-semibold" style={{ color: "var(--glt-green-deep)" }} role="status">
                       Your email app has opened with the message ready to send.
+                    </p>
+                  )}
+                  {error && (
+                    <p className="mt-3 text-sm font-semibold text-[#a11b1b]" role="alert">
+                      {error}
                     </p>
                   )}
                 </div>

@@ -25,11 +25,16 @@ export type Extension = {
   services: { label: string; time: string }[];
   bibleStudy?: string;
   note?: string;
+  /** Handle only, no "@" and no URL. Built into a full link by extensionSocials(). */
+  instagram?: string;
+  x?: string;
 };
 
 export const EXTENSIONS: Extension[] = [
   {
     name: "Lekki (International Headquarters)",
+    instagram: "gltlekki",
+    x: "gltlekki",
     city: "Lekki, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -50,6 +55,8 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ikeja",
+    instagram: "gltikeja",
+    x: "gltikeja",
     city: "Ikeja, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -68,6 +75,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Egbeda",
+    instagram: "gltegbeda",
     city: "Egbeda, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -86,6 +94,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ajah",
+    instagram: "gltajah",
     city: "Ajah, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -103,6 +112,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Isolo",
+    instagram: "gltisolo",
     city: "Isolo, Lagos",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -119,6 +129,8 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Abuja",
+    instagram: "gltabuja",
+    x: "gltabuja",
     city: "Gwarinpa, Abuja",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -137,6 +149,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Gwagwalada",
+    instagram: "gltgwagwalada",
     city: "Gwagwalada, Abuja",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -155,6 +168,8 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ibadan",
+    instagram: "gltibadan",
+    x: "gltibadan",
     city: "Ibadan, Oyo State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -193,6 +208,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ogbomoso",
+    instagram: "gltogbomosho",
     city: "Ogbomoso, Oyo State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -201,7 +217,7 @@ export const EXTENSIONS: Extension[] = [
     phone: "0806 536 7355",
     email: "gltogbomoso@gmail.com",
     address:
-      "Bethnest Hall, Opposite Alata Cafeteria Junction, Under-G, LAUTECH, Ogbomoso",
+      "Olawusi Building, 2nd Floor, Opposite Anglican Grammar School, Starlight, Ogbomoso",
     tz: "WAT",
     services: [
       { label: "Sunday Service", time: "Sun 9:00am" },
@@ -211,6 +227,8 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ile-Ife",
+    instagram: "gltife",
+    x: "gltife",
     city: "Ile-Ife, Osun State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -229,6 +247,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Phase 2, OAUTHC",
+    instagram: "gltphase2oauthc",
     city: "Ile-Ife, Osun State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -248,6 +267,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Osogbo",
+    instagram: "gltosogbochurch",
     city: "Osogbo, Osun State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -267,6 +287,8 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Ilesa",
+    instagram: "glt.ilesa",
+    x: "gltilesa",
     city: "Ilesa, Osun State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -286,6 +308,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Akure",
+    instagram: "gltakure",
     city: "Akure, Ondo State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -323,6 +346,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Bayelsa",
+    instagram: "gltbayelsa",
     city: "Yenagoa, Bayelsa State",
     country: "Nigeria",
     flag: "🇳🇬",
@@ -341,6 +365,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Birmingham",
+    instagram: "gltbirmingham",
     city: "Birmingham",
     country: "United Kingdom",
     flag: "🇬🇧",
@@ -355,6 +380,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Houston",
+    instagram: "glthouston",
     city: "Houston, Texas",
     country: "United States",
     flag: "🇺🇸",
@@ -369,6 +395,7 @@ export const EXTENSIONS: Extension[] = [
   },
   {
     name: "Calgary",
+    instagram: "gltcalgary",
     city: "Calgary, Alberta",
     country: "Canada",
     flag: "🇨🇦",
@@ -488,6 +515,65 @@ export const LINKS = {
 
 export const mapsLink = (address: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+/* Where to join a live service. Used by the "Join Live Online" dialog. */
+export const WATCH_LIVE = [
+  {
+    id: "youtube",
+    name: "YouTube",
+    tagline: "Watch in video",
+    desc: "The full service in picture and sound on GLT Church Worldwide. Best if you want to see the service as it happens.",
+    href: LINKS.youtube,
+    cta: "Watch on YouTube",
+  },
+  {
+    id: "mixlr",
+    name: "Mixlr",
+    tagline: "Listen in audio",
+    desc: "Live audio that holds up on a slow connection and sips your data. Best on the move.",
+    href: LINKS.mixlr,
+    cta: "Listen on Mixlr",
+  },
+] as const;
+
+/* Handles are stored bare (no "@", no URL) so a bad value can never smuggle in
+   a javascript: or data: link. Anything but letters, digits, dot and underscore
+   is dropped before the URL is built. */
+const handle = (raw: string) => raw.trim().replace(/^@/, "").replace(/[^A-Za-z0-9._]/g, "");
+
+export const instagramLink = (raw: string) =>
+  `https://www.instagram.com/${handle(raw)}/`;
+
+export const xLink = (raw: string) => `https://x.com/${handle(raw)}`;
+
+export function extensionSocials(ext: Extension) {
+  const out: { key: string; icon: typeof FaInstagram; href: string; label: string }[] = [];
+  if (ext.instagram) {
+    out.push({
+      key: "instagram",
+      icon: FaInstagram,
+      href: instagramLink(ext.instagram),
+      label: `GLT ${ext.name} on Instagram (@${handle(ext.instagram)})`,
+    });
+  }
+  if (ext.x) {
+    out.push({
+      key: "x",
+      icon: FaXTwitter,
+      href: xLink(ext.x),
+      label: `GLT ${ext.name} on X (@${handle(ext.x)})`,
+    });
+  }
+  return out;
+}
+
+/* Options for the "Which GLT are you writing to?" dropdown on the contact page.
+   The international headquarters always sits first. */
+export const CONTACT_LOCATIONS: string[] = [
+  "International Headquarters (Lekki, Lagos)",
+  ...EXTENSIONS.filter((e) => !e.hq).map((e) => `GLT ${e.name}`),
+  "Not sure / other",
+];
 
 export const SOCIALS = {
   youtube: "https://youtube.com/c/GLTChurchWorldwide",

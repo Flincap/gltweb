@@ -21,12 +21,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Anton is the brand display face. Every fallback below is deliberately heavy
+   and condensed, so if Anton ever fails to load the headings stay solid rather
+   than dropping to a thin system sans. */
 .font-display {
-  font-family: "Anton", "Arial Narrow", sans-serif;
+  font-family: "Anton", "Archivo Black", "Arial Narrow Bold", Impact,
+    "Haettenschweiler", "Franklin Gothic Bold", "Arial Black", "Archivo",
+    sans-serif;
+  font-weight: 400; /* Anton ships one weight; fallbacks are already black */
   letter-spacing: 0.01em;
   text-transform: uppercase;
   line-height: 0.95;
   text-wrap: balance; /* even line lengths, no orphaned words */
+  -webkit-font-smoothing: antialiased;
 }
 
 p {

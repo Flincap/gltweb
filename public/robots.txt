@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
-Sitemap: https://gltweb.vercel.app/sitemap.xml
+Sitemap: https://www.glt.church/sitemap.xml

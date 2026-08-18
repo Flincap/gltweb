@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, MapPin, Phone, Mail } from "lucide-react";
+import { Menu, X, MapPin, Phone, Mail, ArrowUpRight, Radio } from "lucide-react";
+import { FaYoutube } from "react-icons/fa6";
 import {
   Dialog,
   DialogContent,
@@ -9,7 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import logoWhite from "./assets/logo_white.png";
-import { GIVING, LINKS, PAGES, SOCIAL_ICONS } from "./data";
+import { GIVING, LINKS, PAGES, SOCIAL_ICONS, WATCH_LIVE } from "./data";
 
 export function Reveal({
   children,
@@ -175,6 +176,117 @@ export function GiveDialog({
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+/* ------------------------- JOIN LIVE ONLINE ------------------------- */
+
+const LIVE_ICONS = { youtube: FaYoutube, mixlr: Radio } as const;
+
+export function WatchLiveDialog({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (o: boolean) => void;
+}) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-h-[88vh] w-[calc(100vw-2rem)] max-w-md overflow-y-auto border-none bg-white p-0 sm:w-full">
+        <div
+          className="slant-bottom px-6 pb-10 pt-7 text-white sm:px-7"
+          style={{ background: "var(--glt-green)" }}
+        >
+          <DialogHeader>
+            <DialogTitle className="font-display text-[clamp(1.6rem,7vw,2rem)] font-normal text-white">
+              Join live online
+            </DialogTitle>
+            <DialogDescription className="text-white">
+              Pick where you'd like to join the service from. Both carry the
+              same live service.
+            </DialogDescription>
+          </DialogHeader>
+        </div>
+        <div className="space-y-3 px-6 pb-7 pt-1 sm:px-7">
+          {WATCH_LIVE.map((p) => {
+            const Icon = LIVE_ICONS[p.id];
+            return (
+              <a
+                key={p.id}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onOpenChange(false)}
+                className="card-line group flex items-start gap-4 p-4 transition hover:border-[var(--glt-green)] hover:bg-[var(--glt-leaf)] sm:p-5"
+              >
+                <Icon
+                  size={26}
+                  className="mt-0.5 shrink-0"
+                  style={{ color: "var(--glt-green)" }}
+                  aria-hidden
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="font-display text-xl">{p.name}</span>
+                    <span
+                      className="eyebrow text-[0.6rem]"
+                      style={{ color: "var(--glt-green)" }}
+                    >
+                      {p.tagline}
+                    </span>
+                  </span>
+                  <span className="mt-1.5 block text-[13.5px] leading-relaxed text-[var(--glt-ink-soft)]">
+                    {p.desc}
+                  </span>
+                  <span
+                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                    style={{ color: "var(--glt-green-deep)" }}
+                  >
+                    {p.cta}
+                    <ArrowUpRight
+                      size={14}
+                      className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden
+                    />
+                  </span>
+                </span>
+              </a>
+            );
+          })}
+          <p className="pt-1 text-[13px] leading-relaxed text-[var(--glt-ink-soft)]">
+            Services stream live on Sundays and Tuesdays. Opens in a new tab.
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+/**
+ * "Join Live Online" trigger. Owns its own dialog state, so it can be dropped
+ * anywhere without threading props through the page.
+ */
+export function JoinLiveButton({
+  className = "btn btn-outline-light",
+  children = "Join Live Online",
+}: {
+  className?: string;
+  children?: ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        type="button"
+        className={className}
+        onClick={() => setOpen(true)}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+      >
+        {children}
+      </button>
+      <WatchLiveDialog open={open} onOpenChange={setOpen} />
+    </>
   );
 }
 
