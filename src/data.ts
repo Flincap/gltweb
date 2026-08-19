@@ -384,13 +384,13 @@ export const EXTENSIONS: Extension[] = [
   {
     name: "Accra",
     instagram: "gltaccra",
-    city: "North Legon, Accra",
+    city: "Bohye, Accra",
     country: "Ghana",
     flag: "🇬🇭",
     region: "Africa",
     smr: "Pastor Igbekeleoluwa Moses",
     address:
-      "Teamaa Trading Enterprise, Opposite PUMA Filling Station, Agbogba-Ashongman Road, North Legon, Accra",
+      "1st Floor, Canaryblue Plaza, Opposite Academic City University, Bohye, Accra, Ghana",
     tz: "GMT",
     services: [{ label: "Sunday Service", time: "Sun 9:00am" }],
     bibleStudy: "Wed 5:30pm",
