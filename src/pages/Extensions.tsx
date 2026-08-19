@@ -179,7 +179,7 @@ export default function Extensions() {
     <>
       <Seo
         title="Our Extensions | GLT Church Locations Worldwide"
-        description="Find a GLT Church near you: 20+ extensions (branches) across Nigeria, the United Kingdom, the United States and Canada, with service times, addresses and directions."
+        description="Find a GLT Church near you: 20+ extensions (branches) across Nigeria, Ghana, the United Kingdom, the United States and Canada, with service times, addresses and directions."
         path="/extensions"
       />
       <SlantHeader
