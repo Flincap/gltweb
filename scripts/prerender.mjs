@@ -41,7 +41,7 @@ const ROUTES = [
     path: "/extensions",
     title: "Our Extensions | GLT Church Locations Worldwide",
     description:
-      "Find a GLT Church near you: extensions across Nigeria, the United Kingdom, the United States and Canada, with service times, addresses and directions.",
+      "Find a GLT Church near you: extensions across Nigeria, Ghana, the United Kingdom, the United States and Canada, with service times, addresses and directions.",
   },
   {
     path: "/im-new",
