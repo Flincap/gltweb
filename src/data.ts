@@ -550,7 +550,8 @@ export const LINKS = {
   mixlr: "https://mixlr.com/gltchurchlive",
   telegram: "https://t.me/gltlekkimessages",
   leverage: "https://t.me/s/LeverageDevotional",
-  announcements: "https://bit.ly/gltlekki",
+  announcements:
+    "https://drive.google.com/drive/folders/1msiY4HcbPdik6AfDDo05xV1TlinZfBm-",
   email: "enquiries@glt.church",
   phone: "+2349062807057",
   phoneDisplay: "+234 906 280 7057",
